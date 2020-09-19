@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAKO</title>
+</head>
+<body style="background-color: peachpuff;">
+    <div style="display:flex">
+        <h1 style="color:mediumvioletred; font-size:100px; margin:auto;padding-top:30px">TAKO'S PAGE</h1>
+    </div>
+    <div style="display:flex; justify-content:center;">
+        <img src="13ddec1378d0d66944bba45cf3a06053-taco-plano-kawaii-by-vexels.png">
+
+    </div>
+    <div style="display:flex; justify-content: center;">
+        <input type="radio" id="tgtaco" value="si" name="tgtacosiono" onchange="verificasi('tgtaco');">
+        <label for="tgtaco" style="font-size:24px;">Te gustan los taquitos?</label>
+    </div>
+    <br>
+    <div style="display:flex; justify-content: center;">
+        <input type="radio" id="tgtaco2" value="no" name="tgtacosiono" onchange="verificasi('tgtaco2');">
+        <label for="tgtaco2" style="font-size:24px;">No te gustan los taquitos?</label>
+    </div>
+    <script>
+        function verificasi(inf) {
+            if (document.getElementById(inf).value === "si") {
+                alert("Redirigiendote a pagina de taco");
+                window.location = "takoo3.html"
+            } else {
+                document.getElementById(inf) === "no"
+                alert("Tako no te quiere");
+                
+                window.location=("jodet.html");
+            }
+        }
+    </script>
+</body>
+</html>
