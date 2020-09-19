@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina de taco</title>
+
+    <style>
+        .item1 {
+            grid-area: header;
+        }
+
+        .item2 {
+            grid-area: menu;
+        }
+
+        .item3 {
+            grid-area: main;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-areas: 'header header header'
+                                 'main main menu'
+                                 'main main menu';
+                                 
+            padding: 150px;
+            grid-gap: 15px;
+            background-color: blanchedalmond;
+
+        }
+
+        .grid-container>div {
+            background-color: blue;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body style="background-color:blanchedalmond">
+    <div class="grid-container">
+        <div class="item1">Header</div>
+        <div class="item2">Menu</div>
+        <div class="item3">Main</div>
+          </div>
+</body>
+
+</html>
