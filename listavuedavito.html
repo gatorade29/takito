@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takos list</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+</head>
+
+
+<body>
+    <div id="app">
+        <input ref="holi" v-model="message" placeholder="Agrega tarea">
+        <button v-on:click="agregar" v-if="message && seenag">Agregar tarea</button>
+        <ol id="lti">
+            <li v-for="(elemento,indice) in lista" v-on:click="cambcosa(indice)">
+                {{elemento.text}}
+                <span v-if="activo && visible && pini  == indice">
+                    <button v-on:click="borrar(indice)"> <i class="fas fa-trash-alt"></i></button>
+                    <button v-on:click="modificar(indice)"> <i class="fas fa-edit"></i></button>
+                </span>
+                <span v-if="visible2 && modi && pini == indice">
+                    <textarea v-on:click="verifica" v-on:keyup="verifica" v-on:change="verifica" v-model="cambio" style="resize: none;"> {{elemento.text}}</textarea>
+                    <button v-on:click="aceptar(indice)" v-if="davin"><i class="fas fa-check"></i></button>
+                    <button v-on:click="aceptar(indice)" v-if="!davin"><i class="fas fa-trash-alt"></i></button>
+                </span>
+            </li>
+        </ol>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+        var app6 = new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                lista: [],
+                listaguarda: [],
+                seenag: true,
+                activo: true,
+                pini: 0,
+                visible: false,
+                visible2: false,
+                modi: false,
+                miop: true,
+                cambio: '',
+                desapatextizqui: false,
+                davin: false
+            },
+            methods: {
+                verifica: function () {
+                    if (this.cambio == "") {
+                        this.davin = false;
+
+                    } else {
+                        this.davin = true
+                    }
+                },
+                agregar: function () {
+                    this.lista.push({ text: this.message });
+                    this.message = "";
+                    this.$refs.holi.focus();
+                },
+                borrar: function (i) {
+                    this.lista.splice(i, 1);
+                },
+                modificar: function (i) {
+                    this.listaguarda.push(this.lista[i]);
+                    this.lista.splice(i, 1, { text: this.cambio });
+                    this.message = "";
+                    this.seenag = false;
+                    this.pini = i;
+                    this.activo = false;
+                    this.modi = true;
+                    this.visible = true;
+                    this.visible2 = true;
+                    this.miop = false;
+                    this.desapatextizqui = true;
+                },
+                aceptar: function (i) {
+                    if (this.cambio == "") {
+                        this.lista.splice(i, 1, this.listaguarda[0]);
+
+                    }
+                    else {
+                        this.lista.splice(i, 1, { text: this.cambio });
+                    }
+                    this.listaguarda.pop();
+                    this.cambio = "";
+                    this.$refs.holi.focus();
+                    this.seenag = true;
+                    this.activo = true;
+                    this.visible = true;
+                    this.visible2 = false;
+                    this.miop = true;
+                    this.modi = false;
+                    this.desapatextizqui = false;
+                    this.davin = false;
+                },
+
+                cambcosa: function (i) {
+                    if (this.miop === true) {
+                        this.pini = i;
+                        this.visible = !this.visible;
+                    }
+                }
+
+            }
+        });
+    </script>
+</body>
+
+</html>
