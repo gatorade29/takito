@@ -1,0 +1,114 @@
+.titulos{
+    display: flex;
+    justify-content: center;
+}
+#titu0{
+    font-size: 28px;
+    font-family: cursive;
+}
+.titulo0{
+    color:red;
+}
+.titulo1{
+    color:blue;
+}
+.titulo2{
+    color:yellow;
+}
+#titu2{
+     font-size: 28px;
+     font-family: cursive;
+}
+#titu1{
+     font-size: 28px;
+     font-family: cursive;
+}
+.item1 {
+    grid-area: inicio;
+    background-color: orange;
+    font-size: 30px;
+    padding: 20px;
+    text-align: center;
+}
+.item1>div{
+    display: flex;
+    justify-content: space-between;
+    }
+.item2 {
+    grid-area: menuizq;
+    background-color:palevioletred;
+    text-align: center;
+    padding:10px;
+}
+#txt0{
+    width: 100%;
+    height:190px;
+    resize:none;
+}
+#txt0:focus { 
+    background-color: pink;
+    transition: background-color 1s;
+    
+}
+#pqueja{
+    margin:auto;
+    font-size: 15px;
+    font-family: cursive;
+}
+.item2>div{
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 40px;
+    margin:20px;
+    }
+.item3 {
+    grid-area: menuder;
+    padding: 10px;
+    text-align: center;
+    background-color: yellow
+}
+
+#pregunta{
+    margin:auto;
+    font-size: 15px;
+    font-family: cursive;
+   
+}
+.item3>div{
+    margin:20px;
+    display: flex;
+    flex-direction: column;
+    grid-row-gap: 40px;
+    
+}
+.item3 .preguntas:focus{
+background-color: turquoise;
+transition: background-color 1s;
+}
+
+.item4 {
+ 
+    grid-area: central;
+    display: flex;
+    justify-content: center;
+    
+}
+.item5 {
+    grid-area: piedepagina;
+}
+.textop {
+    font-size: 18px;
+    padding: 20px;
+    text-align: justify;
+    font-family: cursive;
+}
+.gridys {
+    display: grid;
+    grid-template-areas: 'inicio inicio inicio inicio inicio inicio inicio' 
+    'menuizq menuizq central  central central menuder menuder'
+    'menuizq menuizq central  central central  menuder menuder'
+    'menuizq menuizq central  central central  menuder menuder'
+    'menuizq menuizq central  central central  menuder menuder'
+    'piedepagina piedepagina piedepagina piedepagina piedepagina piedepagina piedepagina';
+    grid-gap: 15px;
+}
