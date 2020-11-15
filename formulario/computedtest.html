@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <div id="pini">
+        <input type="text" v-model="nomContacto" placeholder="Nombre" v-on:keyup="vnomContacto"
+            v-bind:disabled="disably1">
+        <br>
+        <span v-bind:style="{color:adv1Color}">{{adv1}}</span>
+        <br>
+        <input type="email" v-model="emailContacto" placeholder="Email" v-on:keyup="vemailContacto"
+            v-bind:disabled="disably2">
+        <br>
+        <span v-bind:style="{color:adv2Color}">{{adv2}}</span>
+        <br>
+        <textarea v-model="mensajeContacto" v-bind:disabled="disably3" v-on:keyup="vmensajeContacto" placeholder="Al menos 20 caracteres y no mas de 100"></textarea>
+        <span v-bind:style="{color:adv3Color}">{{contadorCaracteres}}</span>
+        <br>
+        <input type="submit" v-bind:disabled="check ? false : true" v-bind:style="{background:'red'}">
+    </div>
+    <script>
+        var prueba = new Vue({
+            el: "#pini",
+            data: {
+                nomContacto: "",
+                emailContacto: "",
+                mensajeContacto: "",
+                adv1: 'Tu nombre debe tener mas de 4 caracteres',
+                adv2: 'Tu email debe ser valido; "tunombre@ejemplo.com"',
+                disably1: false,
+                disably2: true,
+                disably3: true,
+                adv1Color: 'black',
+                adv2Color: 'black',
+                adv3Color: 'black'
+            },
+            computed: {
+                check: function () {
+                    if (this.adv1Color === 'green' && this.adv2Color === 'green' && this.adv3Color === 'green') {
+                        return true
+                    }
+                    else {
+                        return false
+                    }
+                },
+                contadorCaracteres: function () {
+                    return 100 - this.mensajeContacto.length
+                }
+            },
+            methods: {
+                vnomContacto: function () {
+                    if (this.nomContacto.length >= 4) {
+                        this.adv1 = "Perfecto, tu nombre esta listo y disponible";
+                        this.disably2 = false;
+                        this.adv1Color = 'green';
+                    }
+                    else if (this.nomContacto.length >= 0 && this.nomContacto.length < 4) {
+                        this.adv1 = 'Tu nombre debe tener mas de 4 caracteres';
+                        this.adv1Color = 'red';
+                    }
+                },
+                vemailContacto: function () {
+                    if (this.emailContacto.indexOf("@") !== -1 && this.emailContacto.indexOf(".com") !== -1 && this.emailContacto.indexOf("@") < this.emailContacto.indexOf(".com")) {
+                        this.adv2Color = 'green';
+                        this.adv2 = "Perfecto, tu correo esta bien";
+                        this.disably3 = false;
+                    }
+                    else {
+                        this.adv2Color = 'red';
+                        this.adv2 = 'No olvides poner el @ y el .com dummy';
+                    }
+                },
+                vmensajeContacto: function () {
+                    if (this.mensajeContacto.length>=20 && this.mensajeContacto.length<=100 ) {
+                        this.adv3Color = 'green';
+                    } else {
+                        this.adv3Color = 'red';
+                    }
+                },
+
+            }
+        });
+    </script>
+</body>
+
+</html>
